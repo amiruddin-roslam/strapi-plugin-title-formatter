@@ -175,11 +175,11 @@ const Input = ({
     const textLength = text ? text.length : 0;
 
     if (minLength !== undefined && textLength < minLength) {
-      return `Campo troppo corto (minimo ${minLength} caratteri)`;
+      return `Field too short (minimum ${minLength} characters)`;
     }
 
     if (maxLength !== undefined && textLength > maxLength) {
-      return `Campo troppo lungo (massimo ${maxLength} caratteri)`;
+      return `Field too long (maximum ${maxLength} characters)`;
     }
 
     return undefined;
@@ -207,6 +207,9 @@ const Input = ({
   };
 
   const handleOnChange = (event: any) => {
+    if (currentLength === 0) {
+      return;
+    }
     update(getValueToUpdate(getHtml(event.target.value, markdown), markdown));
   };
 
